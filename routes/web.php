@@ -19,3 +19,5 @@ Route::get('/', function () {
     return "hello jemish";
 });
 Route::get('/students',[StudentController::class,'index']);
+
+
