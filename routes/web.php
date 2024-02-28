@@ -18,6 +18,8 @@ Route::get('/', function () {
     //return view('welcome');
     return "hello jemish";
 });
-Route::get('/students',[StudentController::class,'index']);
+Route::get('/students',[StudentController::class,'index'])->name('students.info');
+Route::get('/students/create',[StudentController::class,'create'])->name('students.create');
+Route::post('/students/store',[StudentController::class,'store'])->name('students.store');
 
 

@@ -9,5 +9,5 @@ class Student extends Model
 {
     use HasFactory;
     //protected $table="student" //to connect if name are different
-    protected $filiable=["name","biodata","address","phone","email"];
+    protected $fillable=["name","biodata","address","phone","email"];
 }

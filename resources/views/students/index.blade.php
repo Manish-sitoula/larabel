@@ -43,28 +43,33 @@
 <body>
 
     <h1>Student List</h1>
-
+    <a href="{{route('students.create')}}">Add Students</a>
     <table>
         <thead>
             <tr>
-                <th>ID</th>
+                <th>S.No</th>
                 <th>Name</th>
-                <th>Email</th>
-                <th>Address</th>
                 <th>Phone</th>
+                <th>Actions</th>
                 <!-- Add other columns as needed -->
             </tr>
         </thead>
         <tbody>
+            @php 
+                $i=1;
+            @endphp
             @foreach ($students as $student)
                 <tr>
-                    <td>{{ $student->id }}</td>
+                    <td>{{ $i }}</td>
                     <td>{{ $student->name }}</td>
-                    <td>{{ $student->email }}</td>
-                    <td>{{ $student->address }}</td>
                     <td>{{ $student->phone }}</td>
+                    <td>
+                        <a href="#">Edit</a>
+                        <a href="#">Delete</a>
+                    </td>
                     <!-- Add other columns as needed -->
                 </tr>
+                @php $i++; @endphp
             @endforeach
         </tbody>
     </table>
