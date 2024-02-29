@@ -1,17 +1,3 @@
-{{-- @foreach($students as $student)
-   Name: {{$student ->name}}
-   email: {{$student ->email}}
-   Biodata: {{$student ->biodata}}
-   Address: {{$student ->Address}}
-   phone: {{$student ->phone}}
-
-@endforeach --}}
-
-
-<!-- resources/views/students/index.blade.php -->
-
-<!-- resources/views/students/index.blade.php -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,35 +6,106 @@
     <title>Student List</title>
     <style>
         body {
-            margin: 20px;
+            margin: 10px;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            padding-left: 150px; /* Increased left padding to center the content */
         }
 
         table {
             border-collapse: collapse;
             width: 100%;
-            margin-top: 20px;
+            margin-top: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
         }
 
         th, td {
             border: 1px solid #ddd;
-            padding: 8px;
+            padding: 6px;
             text-align: left;
         }
 
         th {
             background-color: #f2f2f2;
         }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 6px 10px; /* Decreased button size */
+            background-color: #4caf50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #45a049;
+        }
+
+        .delete-button {
+            background-color: #ff0000;
+            color: white;
+            padding: 4px 8px; /* Decreased button size */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .delete-button:hover {
+            background-color: #cc0000;
+        }
+
+        .message {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .success {
+            background-color: chartreuse;
+        }
+
+        .error {
+            background-color: red;
+        }
+
+        tbody tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        td a {
+            margin-right: 8px;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        td a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
 
     @if (session('message'))
-        <div style="background-color:chartreuse;padding:5px; color:white">
+        <div class="message success">
             {{ session('message') }}
         </div>
     @endif
     @if (session('error'))
-        <div style="background-color:red;padding:5px; color:white">
+        <div class="message error">
             {{ session('error') }}
         </div>
     @endif
@@ -75,7 +132,7 @@
                     <td>{{ $student->phone }}</td>
                     <td>
                         <a href="{{route('students.edit',$student->id)}}">Edit</a>
-                        <a href="{{route('students.delete',$student->id)}}">Delete</a>
+                        <a class="delete-button" href="{{route('students.delete',$student->id)}}">Delete</a>
                     </td>
                     <!-- Add other columns as needed -->
                 </tr>

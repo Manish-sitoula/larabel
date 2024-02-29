@@ -1,17 +1,3 @@
-{{-- @foreach($students as $student)
-   Name: {{$student ->name}}
-   email: {{$student ->email}}
-   Biodata: {{$student ->biodata}}
-   Address: {{$student ->Address}}
-   phone: {{$student ->phone}}
-
-@endforeach --}}
-
-
-<!-- resources/views/students/index.blade.php -->
-
-<!-- resources/views/students/index.blade.php -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,22 +7,83 @@
     <style>
         body {
             margin: 20px;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
         }
 
         table {
             border-collapse: collapse;
             width: 100%;
             margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
         }
 
         th, td {
             border: 1px solid #ddd;
-            padding: 8px;
+            padding: 12px;
             text-align: left;
         }
 
         th {
             background-color: #f2f2f2;
+        }
+
+        form {
+            margin-top: 20px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            display: block;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .message {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .success {
+            background-color: chartreuse;
+        }
+
+        .error {
+            background-color: red;
         }
     </style>
 </head>
@@ -44,32 +91,33 @@
 
     <h1>Insert Student Data</h1>
     @if (session('message'))
-        <div style="background-color:chartreuse;padding:5px; color:white">
+        <div class="message success">
             {{ session('message') }}
         </div>
     @endif
     @if (session('error'))
-        <div style="background-color:red;padding:5px; color:white">
+        <div class="message error">
             {{ session('error') }}
         </div>
     @endif
     @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+        <div class="message error">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
     @endif
-    <form method="post" action="{{route('students.store')}}">
+
+    <form method="post" action="{{route('students.store')}}">            
         {{csrf_field()}}
-        <input type="text" placeholder="Enter name"  name="name">
+        <input type="text" placeholder="Enter name" name="name">
         <input type="email" placeholder="Enter email" name="email">
         <input type="text" placeholder="Enter address" name="address">
         <input type="text" placeholder="Enter phone" name="phone">
         <textarea placeholder="Enter biodata" name="biodata"></textarea>
-        <button type="submit">Insert student</button>
+        <button type="submit">Insert Student</button>
     </form>
 
 </body>

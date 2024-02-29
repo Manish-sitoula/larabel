@@ -50,7 +50,16 @@ class StudentController extends Controller
         }
       
     }
-    
+    public function update(Request $request,$id){
+        $students = Student::find($id);
+        $students->name = $request-> input('name');
+        $students->address = $request-> input('address');
+        $students->phone = $request-> input('phone');
+        $students->email = $request-> input('email');
+       // $students->biodata = $request-> input('biodata');
+        $students-> update();
+        return redirect('students#')->with('status',"Data is updated sucessfully");
+    }
 }
  
 
