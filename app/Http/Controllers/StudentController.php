@@ -36,6 +36,21 @@ class StudentController extends Controller
             return redirect()->back()->with("error","Error encountered");
         }
 
+       
+
     }
+    public function edit($id){
+        try{
+            $students = Student::find($id);
+            return view('students.edit',compact('students'));
+          
+        }
+        catch(\Exception $e){
+           return redirect()->back()->with("error","Error encountered");
+        }
+      
+    }
+    
 }
+ 
 

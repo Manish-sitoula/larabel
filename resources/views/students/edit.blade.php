@@ -42,7 +42,7 @@
 </head>
 <body>
 
-    <h1>Insert Student Data</h1>
+    <h1>Edit and update Student Data</h1>
     @if (session('message'))
         <div style="background-color:chartreuse;padding:5px; color:white">
             {{ session('message') }}
@@ -64,12 +64,12 @@
     @endif
     <form method="post" action="{{route('students.store')}}">
         {{csrf_field()}}
-        <input type="text" placeholder="Enter name"  name="name">
+        <input type="text" placeholder="Enter name" value="{{$students->name}}" name="name">
         <input type="email" placeholder="Enter email" name="email">
         <input type="text" placeholder="Enter address" name="address">
         <input type="text" placeholder="Enter phone" name="phone">
         <textarea placeholder="Enter biodata" name="biodata"></textarea>
-        <button type="submit">Insert student</button>
+        <button type="submit">update student</button>
     </form>
 
 </body>

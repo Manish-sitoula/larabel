@@ -74,7 +74,7 @@
                     <td>{{ $student->name }}</td>
                     <td>{{ $student->phone }}</td>
                     <td>
-                        <a href="#">Edit</a>
+                        <a href="{{route('students.edit',$student->id)}}">Edit</a>
                         <a href="{{route('students.delete',$student->id)}}">Delete</a>
                     </td>
                     <!-- Add other columns as needed -->
