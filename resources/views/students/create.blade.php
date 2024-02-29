@@ -43,6 +43,25 @@
 <body>
 
     <h1>Insert Student Data</h1>
+    @if (session('message'))
+        <div style="background-color:chartreuse;padding:5px; color:white">
+            {{ session('message') }}
+        </div>
+    @endif
+    @if (session('error'))
+        <div style="background-color:red;padding:5px; color:white">
+            {{ session('error') }}
+        </div>
+    @endif
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <form method="post" action="{{route('students.store')}}">
         {{csrf_field()}}
         <input type="text" placeholder="Enter name" name="name">

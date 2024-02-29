@@ -42,6 +42,16 @@
 </head>
 <body>
 
+    @if (session('message'))
+        <div style="background-color:chartreuse;padding:5px; color:white">
+            {{ session('message') }}
+        </div>
+    @endif
+    @if (session('error'))
+        <div style="background-color:red;padding:5px; color:white">
+            {{ session('error') }}
+        </div>
+    @endif
     <h1>Student List</h1>
     <a href="{{route('students.create')}}">Add Students</a>
     <table>
@@ -65,7 +75,7 @@
                     <td>{{ $student->phone }}</td>
                     <td>
                         <a href="#">Edit</a>
-                        <a href="#">Delete</a>
+                        <a href="{{route('students.delete',$student->id)}}">Delete</a>
                     </td>
                     <!-- Add other columns as needed -->
                 </tr>
